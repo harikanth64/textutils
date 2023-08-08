@@ -28,6 +28,7 @@ function App() {
         <Navbar title="TextUtils" aboutTitle="About" />
         <Alerts alertMessage={alert} />
         <div className="container my-3">
+        {/* Replace Switch with Routes for react-router-dom v6  */}
         <Routes>
             <Route exact path="/" element={<TextForm showAlert={showAlert} textTitle="Enter the text to analyze below" />} />
             <Route exact path="/about" element={<About/>} /> 

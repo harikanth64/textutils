@@ -45,18 +45,18 @@ export default function TextForm(props) {
                 <div className="mb-3">
                     <textarea className="form-control" value={text} onChange={handleOnChange} id="myBox" rows="8"></textarea>
                 </div>
-                <button className="btn btn-primary mx-1" onClick={handleUpperCaseClick}>Convert to Uppercase</button>
-                <button className="btn btn-primary mx-1" onClick={handleLowerCaseClick}>Convert to Lowercase</button>
-                <button className="btn btn-primary mx-1" onClick={handleClearClick}>Clear Text</button>
-                <button className="btn btn-primary mx-1" onClick={handleCopyClick}>Copy Text</button>
-                <button className="btn btn-primary mx-1" onClick={handleExtraSpacesClick}>Remove extra spaces</button>
+                <button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handleUpperCaseClick}>Convert to Uppercase</button>
+                <button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handleLowerCaseClick}>Convert to Lowercase</button>
+                <button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handleClearClick}>Clear Text</button>
+                <button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handleCopyClick}>Copy Text</button>
+                <button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handleExtraSpacesClick}>Remove extra spaces</button>
             </div>
             <div className="container my-3">
                 <h2>Your text summary</h2>
-                <p><b>{text.split(" ").length}</b> words and <b>{text.length}</b> charecters</p>
-                <p>{text.split(" ").length * 0.08} Minutes read</p>
+                <p><b>{text.split(" ").filter((element)=>{return element.length!==0}).length}</b> words and <b>{text.length}</b> charecters</p>
+                <p>{text.split(" ").filter((element)=>{return element.length!==0}).length * 0.08} Minutes read</p>
                 <h3>Preview</h3>
-                <p>{text}</p>
+                <p>{text.length>0?text:"Nothing to review!"}</p>
             </div>
         </>
     )
