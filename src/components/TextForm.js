@@ -26,9 +26,7 @@ export default function TextForm(props) {
     }
     const handleCopyClick = ()=> {
         console.log("text copied");
-        var text = document.getElementById("myBox");
-        text.select();
-        navigator.clipboard.writeText(text.value);
+        navigator.clipboard.writeText(text);
         props.showAlert("Text copied to clipboard!", "success");
     }
     const handleExtraSpacesClick = ()=> {
@@ -53,7 +51,7 @@ export default function TextForm(props) {
             </div>
             <div className="container my-3">
                 <h2>Your text summary</h2>
-                <p><b>{text.split(" ").filter((element)=>{return element.length!==0}).length}</b> words and <b>{text.length}</b> charecters</p>
+                <p><b>{text.split(/\s+/).filter((element)=>{return element.length!==0}).length}</b> words and <b>{text.length}</b> charecters</p>
                 <p>{text.split(" ").filter((element)=>{return element.length!==0}).length * 0.08} Minutes read</p>
                 <h3>Preview</h3>
                 <p>{text.length>0?text:"Nothing to review!"}</p>
